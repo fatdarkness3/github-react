@@ -3,11 +3,11 @@
 
 
 
- export let token = "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"
+ export let token = "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"
 
- export let username = "mojtabast"
+ 
 
- async function api() {
+ async function api(username) {
     
     const octokit = new Octokit({
         auth: token

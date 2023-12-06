@@ -1,7 +1,7 @@
-import { username } from "./api"
+
 import { Octokit } from "octokit";
 import { token } from "./api";
-async function repositories() {
+async function repositories(username) {
 
     const octokit = new Octokit({
         auth: token

@@ -4,22 +4,52 @@ import "../styles/style.css";
 import { api } from "../api/api";
 import { repositories } from "../api/RepositoresApi";
 import RenderRepose from "./renderrepose";
-
 export default function RepositoryPage() {
     const [rec , setRec] = useState({})
-    const [repose , setRepose] = useState({})
+    const [repose , setRepose] = useState([])
+    const [searchValue , setSearchValue ] = useState("")
+
+
+     let username = "fatdarkness3"
+
+
+
+
+
+
+
+
+    
 
     useEffect(() => {
-        api().then((e) => {
-            console.log(e.name)
+        api(username).then((e) => {
             setRec(e)
         })
-        repositories().then((e) => {
-            console.log(e)
-            setRepose(e)
-        })
-    } , [])
-    return(
+        repositories(username).then((e) => {
+            setRepose(e)  
+
+            
+
+            const str = 'flexiple';
+const str2 = str.charAt(2);
+console.log(str2);
+                
+            // for(let i = 0; i<e.length; i++) {
+                
+                // }
+            })
+            
+        } , [])
+        // function focus() {
+            
+            //     let black  = document.querySelector(".divBlack")
+            //     if(button.focus()) {
+                //         black.className.add("backgroundBlack")
+                //     }
+                // }
+                // focus()
+                
+                return(
         <>
             <header>
                 <div className="column">
@@ -37,11 +67,17 @@ export default function RepositoryPage() {
                         
 
 
-
+                        <div className="f">
+                        
                         <div className="right">
-
+                                <div className="f">
                                 <input className="input" type="search" placeholder="type"/>
-
+                                <button type="button" class="btn btn-outline-secondary">
+                                    <i class="bi bi-search"></i>
+                                </button>
+                                </div>
+                                
+                                    
                                 <button type="button" class="btn btn-outline-secondary">
                                     <div className="flex-button">
                                         <h4>+</h4>    
@@ -61,29 +97,68 @@ export default function RepositoryPage() {
                             </button>
 
                         </div>
+                        </div>
                     </div>
                     <div className="part2">
                                     <ul>
                                         <li>
-                                        <i class="bi bi-book"></i>
-                                            <h6>Overview</h6>
+                                            <button className="focus">
+                                                <div className="give-position">
+                                                    <i class="bi bi-book"></i>
+                                                    <h6>Overview</h6>
+                                                </div>
+                                                <div className="backgroundBlack"></div>
+                                            </button>
+                                            
                                         </li>
                                         <li>
-                                            <i class="bi bi-save2-fill"></i>
-                                            <h6>Repositories</h6>
+                                            <button className="focus">
+                                            <div className="give-position">
+                                                    <i class="bi bi-save2-fill"></i>
+                                                    <h6>Repositories</h6>
+                                                    <div className="first">
+                                                        <div className="absolute">{repose.length}</div>
+                                                    </div>
+                                                </div>
+                                                <div className="backgroundBlack"></div>
+                                            </button>
+                                            
+                                                
+                                                
                                         </li>
                                         <li>
-                                            <i class="bi bi-file-earmark-lock-fill"></i>
-                                            <h6>Project</h6>
+                                            <button className="focus">
+                                            <div className="give-position">
+                                                    <i class="bi bi-file-earmark-lock-fill"></i>
+                                                    <h6>Project</h6>
+                                                </div>
+                                                <div className="backgroundBlack"></div>
+                                            </button>
+                                                
 
                                         </li>
                                         <li>
-                                            <i class="bi bi-box"></i>
-                                            <h6>package</h6>
+                                            <button className="focus">
+                                                <div className="give-position">
+                                                    <i class="bi bi-box"></i>
+                                                    <h6>package</h6>
+                                                </div>
+                                                <div className="backgroundBlack"></div>
+                                            </button>
+                                            
+                                                
                                         </li>
                                         <li>
-                                            <i class="bi bi-star"></i>
-                                            <h6>Star</h6>
+                                            <button className="focus">
+                                            <div className="give-position">
+                                                    <i class="bi bi-star"></i>
+                                                    <h6>Star</h6>
+                                                </div>
+                                            <div className="backgroundBlack"></div>
+                                            </button>
+                                                
+                                            
+                                                
                                         </li>
                                     </ul>
                                 </div>
@@ -113,7 +188,12 @@ export default function RepositoryPage() {
                         </div>
                         <div className="p2">
                             <div className="searchBtn">
-                                <input type="search" placeholder="Find your repository" class="form-control" id="exampleInputEmail1"/>
+                                <input type="search" placeholder="Find your repository" class="form-control" id="exampleInputEmail1"
+                                 onChange={(e) => {
+                                    let a = e.target.value
+                                    setSearchValue(a)
+                                    
+                                }}/>
                                 <button type="button" class="btn btn-secondary btn-sm">
                                     <div className="givFlex">
                                         Type 
@@ -138,7 +218,23 @@ export default function RepositoryPage() {
                                 
                             </div>
                             <div className="repose">
-                                <RenderRepose/>
+                                {repose.map((e) => {
+                                    if(searchValue  == e.name.charAt(length)) {
+                                        let result1 = new Date(e.updated_at).toLocaleDateString('en-GB');
+                                    
+                                        return <RenderRepose   pushed_at = {result1} language = {e.language} type={e.private} name={e.name}/>
+                                    }else if (searchValue == "" || !searchValue) {
+                                        let result1 = new Date(e.updated_at).toLocaleDateString('en-GB');
+                                    
+                                        return <RenderRepose   pushed_at = {result1} language = {e.language} type={e.private} name={e.name}/>
+                                    }
+                                    
+                                    
+                                    
+                                })}
+                                    
+                               
+                                
                             </div>
                         </div>
                     </div>
