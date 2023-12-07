@@ -1,7 +1,7 @@
 export default function RenderRepose(props) {
     return(
         <>
-    <div className="father">
+    <div key = {props.id} className="father">
             <div className="space">
                 <div className="part1-1">
                     <a href="#" >
@@ -10,8 +10,13 @@ export default function RenderRepose(props) {
                     <p>{props.type==false ? "public": "privet"}</p>
                 </div>
                 <div className="part2-2">
-                    <button type="button" class="btn  btn-secondary btn-sm"><i class="bi paddingI bi-star"></i> star</button>
-                    <button type="button" class="btn btn-secondary btn-sm"><i class="bi bi-caret-down"></i></button>
+                    <button type="button" class="btn  btn-secondary btn-sm">
+                    <i class="fa fa-star-o"></i>
+                        <p>Star</p>
+                    </button>
+                    <button type="button" class="btn btn-secondary btn-sm">
+                        <i class="fa fa-sort-down"></i>
+                    </button>
                 </div>
 
             </div>   

@@ -10,7 +10,7 @@ export default function RepositoryPage() {
     const [searchValue , setSearchValue ] = useState("")
 
 
-     let username = "fatdarkness3"
+     let username = "mojtabast"
 
 
 
@@ -26,17 +26,12 @@ export default function RepositoryPage() {
             setRec(e)
         })
         repositories(username).then((e) => {
-            setRepose(e)  
-
-            
-
-            const str = 'flexiple';
-const str2 = str.charAt(2);
-console.log(str2);
+            setRepose(e)
                 
             // for(let i = 0; i<e.length; i++) {
                 
                 // }
+                console.log(rec)
             })
             
         } , [])
@@ -104,7 +99,7 @@ console.log(str2);
                                         <li>
                                             <button className="focus">
                                                 <div className="give-position">
-                                                    <i class="bi bi-book"></i>
+                                                    <i class="fa fa-book"></i>
                                                     <h6>Overview</h6>
                                                 </div>
                                                 <div className="backgroundBlack"></div>
@@ -114,7 +109,7 @@ console.log(str2);
                                         <li>
                                             <button className="focus">
                                             <div className="give-position">
-                                                    <i class="bi bi-save2-fill"></i>
+                                                    <i class="fa fa-save"></i>
                                                     <h6>Repositories</h6>
                                                     <div className="first">
                                                         <div className="absolute">{repose.length}</div>
@@ -129,7 +124,7 @@ console.log(str2);
                                         <li>
                                             <button className="focus">
                                             <div className="give-position">
-                                                    <i class="bi bi-file-earmark-lock-fill"></i>
+                                                    <i class="fa fa-columns"></i>
                                                     <h6>Project</h6>
                                                 </div>
                                                 <div className="backgroundBlack"></div>
@@ -140,7 +135,7 @@ console.log(str2);
                                         <li>
                                             <button className="focus">
                                                 <div className="give-position">
-                                                    <i class="bi bi-box"></i>
+                                                    <i class="fa fa-dropbox"></i>
                                                     <h6>package</h6>
                                                 </div>
                                                 <div className="backgroundBlack"></div>
@@ -151,7 +146,7 @@ console.log(str2);
                                         <li>
                                             <button className="focus">
                                             <div className="give-position">
-                                                    <i class="bi bi-star"></i>
+                                                    <i class="fa fa-star-o"></i>
                                                     <h6>Star</h6>
                                                 </div>
                                             <div className="backgroundBlack"></div>
@@ -174,13 +169,43 @@ console.log(str2);
                             <div className="userName">
                                 <p>{rec.name}</p>
                             </div>
-                            <div className="button-follow">
-                            <button type="button" class="btn btn-secondary btn-sm">follow</button>
-                                
+                            <div className="login">
+                                <h5>{rec.login}</h5>
                             </div>
-                            <div className="followers">
-                                <i class="bi bi-person"></i>
-                                <p><span> {rec.followers} </span>followers <span>.</span>  <span>{rec.following} </span>following:</p>
+                            <div className="button-follow">
+                                <button type="button" class="btn btn-secondary btn-sm">follow</button>
+                            </div>
+                            <div className="bio">
+                                <h6>{rec.bio}</h6>
+                            </div>
+                            <div className="followers"> 
+                                   
+                                        <a className="a" href={rec.followers_url}>
+                                             
+                                                <i style={{ fontSize: "13px",}} class="fa fa-users"></i>
+                                                <span>{rec.followers}</span>
+                                                <p>followers</p>
+                                            
+                                            
+                                        </a> 
+                                    
+                                    <span>.</span>
+                                    
+                                        <a className="a" href={rec.following_url}>
+                                            
+                                                <span>{rec.following}</span>
+                                                <p>following</p>
+                                            
+                                        </a>
+                                    
+                            </div>
+                            <div className="blog">
+                                <i className="fa fa-chain"></i>
+                                <a href={rec.blog}>{rec.blog}</a>
+                            </div>
+                            <div className="achievements">
+                                <h6>Achievements</h6>
+
                             </div>
                             <div className="block-report">
                                 <p>block.and.report</p>
@@ -196,37 +221,40 @@ console.log(str2);
                                 }}/>
                                 <button type="button" class="btn btn-secondary btn-sm">
                                     <div className="givFlex">
-                                        Type 
-                                        <i class="bi bi-caret-down-fill"/>
+                                        <p>Type </p>
+                                        
+                                        <i class="fa fa-sort-down"></i>
                                     </div>
                                     
                                 </button>
                                 <button type="button" class="btn btn-secondary btn-sm">
                                     <div className="givFlex">
-                                        Language 
-                                        <i class="bi bi-caret-down-fill"/>  
+                                        <p>Language </p>
+                                        
+                                        <i class="fa fa-sort-down"></i> 
                                     </div>
                                 
                                 </button>
                                 <button type="button" class="btn btn-secondary btn-sm">
                                     <div className="givFlex">
-                                        Sort 
-                                        <i class="bi bi-caret-down-fill"/>
+                                        <p>Sort</p>
+                                        
+                                        <i class="fa fa-sort-down"></i>
                                     </div>
                                     
                                 </button>
                                 
                             </div>
                             <div className="repose">
-                                {repose.map((e) => {
+                                {repose.map((e , id) => {
                                     if(searchValue  == e.name.charAt(length)) {
                                         let result1 = new Date(e.updated_at).toLocaleDateString('en-GB');
                                     
-                                        return <RenderRepose   pushed_at = {result1} language = {e.language} type={e.private} name={e.name}/>
+                                        return <RenderRepose id = {id}   pushed_at = {result1} language = {e.language} type={e.private} name={e.name}/>
                                     }else if (searchValue == "" || !searchValue) {
                                         let result1 = new Date(e.updated_at).toLocaleDateString('en-GB');
                                     
-                                        return <RenderRepose   pushed_at = {result1} language = {e.language} type={e.private} name={e.name}/>
+                                        return <RenderRepose id = {id}   pushed_at = {result1} language = {e.language} type={e.private} name={e.name}/>
                                     }
                                     
                                     
