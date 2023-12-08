@@ -66,10 +66,10 @@ export default function RepositoryPage() {
                         
                         <div className="right">
                                 <div className="f">
-                                <input className="input" type="search" placeholder="type"/>
-                                <button type="button" class="btn btn-outline-secondary">
-                                    <i class="bi bi-search"></i>
+                                <button type="button" class="btn btn-outline-secondary bbb" >
+                                    <i class="fa fa-search"></i>
                                 </button>
+                                <input className="input" type="search" placeholder="type"/>
                                 </div>
                                 
                                     
@@ -247,7 +247,7 @@ export default function RepositoryPage() {
                             </div>
                             <div className="repose">
                                 {repose.map((e , id) => {
-                                    if(searchValue  == e.name.charAt(length)) {
+                                    if(searchValue  == e.name.charAt(length.toString) || searchValue  == e.name ) {
                                         let result1 = new Date(e.updated_at).toLocaleDateString('en-GB');
                                     
                                         return <RenderRepose id = {id}   pushed_at = {result1} language = {e.language} type={e.private} name={e.name}/>
