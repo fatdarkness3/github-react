@@ -3,7 +3,7 @@
 
 
 
- export let token = "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"
+ export let token = "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"
 
  
 

@@ -1,4 +1,4 @@
-import RepositoryPage from "../component/repositoryPage";
+import RepositoryPage from "../component/mainPageOfRepositories.jsx";
 
 
 
