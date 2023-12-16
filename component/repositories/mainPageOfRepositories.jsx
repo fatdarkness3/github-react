@@ -1,8 +1,8 @@
 
 import { useEffect, useState } from "react";
-import "../styles/style.css";
-import { api } from "../api/api";
-import { repositories } from "../api/RepositoresApi";
+import "../../styles/style.css";
+import { api } from "../../api/userInfo";
+import { repositories } from "../../api/RepositoresApi";
 import RenderRepose from "./renderRepositories/renderrepose";
 import Header from "./header/header";
 import UserProfile from "./userProfile/userProfile";
@@ -13,7 +13,7 @@ export default function RepositoryPage() {
     const [searchValue , setSearchValue ] = useState("")
 
 
-     let username = "mojtabast"
+     let username = "fatdarkness3";
 
 
 

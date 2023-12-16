@@ -10,13 +10,19 @@ export default function RenderRepose(props) {
                     <p>{props.type==false ? "public": "privet"}</p>
                 </div>
                 <div className="part2-2">
-                    <button type="button" class="btn  btn-secondary btn-sm">
-                    <i class="fa fa-star-o"></i>
-                        <p>Star</p>
+                    <button type="button" class="btn btn1  btn-secondary btn-sm">
+                        <div className="p-p1">
+                            <i class="fa fa-star-o"></i>
+                            <p>Star</p>
+                        </div>
+                        <div className="p-p2">
+                        <button type="button" class="btn btn-secondary btn-sm">
+                            <i class="fa fa-sort-down"></i>
+                        </button>
+                        </div>
+                        
                     </button>
-                    <button type="button" class="btn btn-secondary btn-sm">
-                        <i class="fa fa-sort-down"></i>
-                    </button>
+                    
                 </div>
 
             </div>   

@@ -24,8 +24,10 @@ export default function Header(props) {
                                 <div className="f">
                                 <button type="button" class="btn btn-outline-secondary bbb" >
                                     <i class="fa fa-search"></i>
+                                    <input className="input" type="search" placeholder="Type / to search "/>
+                                    
                                 </button>
-                                <input className="input" type="search" placeholder="type"/>
+                                
                                 </div>
                                 
                                     
@@ -50,6 +52,24 @@ export default function Header(props) {
                         </div>
                         </div>
                     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                     <div className="part2">
                                     <ul>
                                         <li>
