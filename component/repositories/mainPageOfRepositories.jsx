@@ -13,6 +13,7 @@ export default function RepositoryPage() {
     const [repose , setRepose] = useState([])
     const [searchValue , setSearchValue ] = useState("")
     const [firstLoading , setFirstLoading] = useState(false)
+    const [error , setError] = useState(false)
 
      let username = "fatdarkness3";
 
@@ -33,8 +34,12 @@ export default function RepositoryPage() {
         api(username).then((e) => {
             setRec(e)
         })
+        .catch(() =>{
+            setError(true)
+        })
 
-        
+        setError(false)
+
         repositories(username).then((e) => {
             setRepose(e)
             })
@@ -52,13 +57,14 @@ export default function RepositoryPage() {
             
             return(
                 <>
-                    {}
+                    
                     <Header numberOfRepositories = {repose.length}/>
                     <div className="main">
                         <div className="wrapper">
                             <div className="flexing">
-        
-                                <UserProfile avatar_url = {rec.avatar_url} name = {rec.name} login = {rec.login} bio = {rec.bio} followers_url = {rec.followers_url} followers = {rec.followers} following_url = {rec.following_url} following = {rec.following} blog = {rec.blog}  />
+                            {error ? <h1 color="#fff">error</h1>  : 
+                            <UserProfile avatar_url = {rec.avatar_url} name = {rec.name} login = {rec.login} bio = {rec.bio} followers_url = {rec.followers_url} followers = {rec.followers} following_url = {rec.following_url} following = {rec.following} blog = {rec.blog}  />}
+                                
                                 
                                 <div className="p2">
                                     <SearchBtn setSearchValue = {setSearchValue}/>
