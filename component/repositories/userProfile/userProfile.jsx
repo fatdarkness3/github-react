@@ -1,3 +1,5 @@
+import { PuffLoader } from "react-spinners"
+
 export default function UserProfile(props) {
    return(
    <>
@@ -40,8 +42,15 @@ export default function UserProfile(props) {
                                     
                             </div>
                             <div className="blog">
-                                <i className="fa fa-chain"></i>
-                                <a href={props.blog}>{props.blog}</a>
+                               { !props.blog ? ""  : 
+                               <>
+                               
+                               <i className="fa fa-chain"></i>
+                               <a href={props.blog}>{props.blog}</a>
+                                
+                               
+                               </>}
+                               
                             </div>
                             <div className="achievements">
                                 <h6>Achievements</h6>
