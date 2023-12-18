@@ -8,6 +8,7 @@ import Header from "./header/header";
 import UserProfile from "./userProfile/userProfile";
 import SearchBtn from "./searchBtn/searchBtn";
 import { MoonLoader } from "react-spinners";
+import propsForUserProfile from "./userProfile/propsForUserProfile/propsForUserProfile";
 export default function RepositoryPage() {
     const [rec , setRec] = useState({})
     const [repose , setRepose] = useState([])
@@ -20,7 +21,7 @@ export default function RepositoryPage() {
 
 
 
-
+    
 
 
     
@@ -58,7 +59,7 @@ export default function RepositoryPage() {
                         <div className="wrapper">
                             <div className="flexing">
         
-                                <UserProfile avatar_url = {rec.avatar_url} name = {rec.name} login = {rec.login} bio = {rec.bio} followers_url = {rec.followers_url} followers = {rec.followers} following_url = {rec.following_url} following = {rec.following} blog = {rec.blog}  />
+                                <UserProfile profile = {propsForUserProfile(rec)} />
                                 
                                 <div className="p2">
                                     <SearchBtn setSearchValue = {setSearchValue}/>

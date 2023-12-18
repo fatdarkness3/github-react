@@ -1,4 +1,4 @@
-import { PuffLoader } from "react-spinners"
+
 
 export default function UserProfile(props) {
    return(
@@ -6,26 +6,26 @@ export default function UserProfile(props) {
     
     <div className="p1">
                             <div className="userImage">
-                                <img src={props.avatar_url}/>
+                                <img src={props.profile.image}/>
                             </div>
                             <div className="userName">
-                                <p>{props.name}</p>
+                                <p>{props.profile.name}</p>
                             </div>
                             <div className="login">
-                                <h5>{props.login}</h5>
+                                <h5>{props.profile.login}</h5>
                             </div>
                             <div className="button-follow">
                                 <button type="button" class="btn btn-secondary btn-sm">follow</button>
                             </div>
                             <div className="bio">
-                                <h6>{props.bio}</h6>
+                                <h6>{props.profile.bio}</h6>
                             </div>
                             <div className="followers"> 
                                    
-                                        <a className="a" href={props.followers_url}>
+                                        <a className="a" href={props.profile.followers_url}>
                                              
                                                 <i style={{ fontSize: "13px",}} class="fa fa-users"></i>
-                                                <span>{props.followers}</span>
+                                                <span>{props.profile.followers}</span>
                                                 <p>followers</p>
                                             
                                             
@@ -33,9 +33,9 @@ export default function UserProfile(props) {
                                     
                                     <span>.</span>
                                     
-                                        <a className="a" href={props.following_url}>
+                                        <a className="a" href={props.profile.following_url}>
                                             
-                                                <span>{props.following}</span>
+                                                <span>{props.profile.following}</span>
                                                 <p>following</p>
                                             
                                         </a>
@@ -46,7 +46,7 @@ export default function UserProfile(props) {
                                <>
                                
                                <i className="fa fa-chain"></i>
-                               <a href={props.blog}>{props.blog}</a>
+                               <a href={props.profile.blog}>{props.profile.blog}</a>
                                 
                                
                                </>}
