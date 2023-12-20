@@ -9,11 +9,15 @@ import UserProfile from "./userProfile/userProfile";
 import SearchBtn from "./searchBtn/searchBtn";
 import { MoonLoader } from "react-spinners";
 import propsForUserProfile from "./userProfile/propsForUserProfile/propsForUserProfile";
+
+
+
 export default function RepositoryPage() {
     const [rec , setRec] = useState({})
     const [repose , setRepose] = useState([])
     const [searchValue , setSearchValue ] = useState("")
     const [firstLoading , setFirstLoading] = useState(false)
+    const [error , setError] = useState(false)
 
      let username = "fatdarkness3";
 
@@ -34,8 +38,12 @@ export default function RepositoryPage() {
         api(username).then((e) => {
             setRec(e)
         })
+        .catch(() =>{
+            setError(true)
+        })
 
-        
+        setError(false)
+
         repositories(username).then((e) => {
             setRepose(e)
             })
@@ -53,19 +61,25 @@ export default function RepositoryPage() {
             
             return(
                 <>
-                    {}
+                    
                     <Header numberOfRepositories = {repose.length}/>
                     <div className="main">
                         <div className="wrapper">
                             <div className="flexing">
+
         
-                                <UserProfile profile = {propsForUserProfile(rec)} />
+                                
+
+                            {error ? <h1 color="#fff">error</h1>  : 
+                            
+                            <UserProfile profile = {propsForUserProfile(rec)} />}
+
                                 
                                 <div className="p2">
                                     <SearchBtn setSearchValue = {setSearchValue}/>
                                     <div className="repose">
                                         {repose.map((e , id) => {
-                                            if(searchValue  == e.name.charAt(length.toString) || searchValue  == e.name ) {
+                                            if(e.name.includes(searchValue ) || searchValue  == e.name ) {
                                                 let result1 = new Date(e.updated_at).toLocaleDateString('en-GB');
                                             
                                                 return <RenderRepose id = {id}   pushed_at = {result1} language = {e.language} type={e.private} name={e.name}/>
