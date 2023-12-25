@@ -9,20 +9,23 @@ import UserProfile from "./userProfile/userProfile";
 import SearchBtn from "./searchBtn/searchBtn";
 import { MoonLoader } from "react-spinners";
 import propsForUserProfile from "./userProfile/propsForUserProfile/propsForUserProfile";
-
+import { useParams } from "react-router-dom";
 
 
 export default function RepositoryPage() {
+    
     const [rec , setRec] = useState({})
     const [repose , setRepose] = useState([])
     const [searchValue , setSearchValue ] = useState("")
     const [firstLoading , setFirstLoading] = useState(false)
     const [error , setError] = useState(false)
 
-     let username = "fatdarkness3";
+    
 
-
-
+     let params = useParams()
+     let a = params.username
+     
+    
 
 
     
@@ -32,10 +35,10 @@ export default function RepositoryPage() {
 
     useEffect(() => {
 
-
+        
 
         setFirstLoading(true)
-        api(username).then((e) => {
+        api(a).then((e) => {
             setRec(e)
         })
         .catch(() =>{
@@ -44,7 +47,7 @@ export default function RepositoryPage() {
 
         setError(false)
 
-        repositories(username).then((e) => {
+        repositories(a).then((e) => {
             setRepose(e)
             })
             .finally(() => {
@@ -62,7 +65,7 @@ export default function RepositoryPage() {
             return(
                 <>
                     
-                    <Header numberOfRepositories = {repose.length}/>
+                    <Header params = {a} numberOfRepositories = {repose.length}/>
                     <div className="main">
                         <div className="wrapper">
                             <div className="flexing">

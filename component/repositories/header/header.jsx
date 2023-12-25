@@ -1,4 +1,11 @@
+import { useState } from "react"
+
+
+
 export default function Header(props) {
+
+
+    const [params , setParams] = useState("")
     return(
         <>
         
@@ -21,13 +28,22 @@ export default function Header(props) {
                         <div className="f">
                         
                         <div className="right">
-                                <div className="f">
+                            <div className="f"  >
+                                <form onSubmit={(e) => {
+                                    
+                                   
+                                }}>
                                 <button type="button" class="btn btn-outline-secondary bbb" >
                                     <i class="fa fa-search"></i>
-                                    <input className="input" type="search" placeholder="Type / to search "/>
+                                    <input onChange={(e) => {
+                                        
+                                        let val = e.target.value
+                                        val = props.params
+
+                                    }} className="input" type="search" placeholder="Type / to search "/>
                                     
                                 </button>
-                                
+                                </form>
                                 </div>
                                 
                                     

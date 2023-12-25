@@ -1,12 +1,18 @@
+import HomeScreen from "../component/homeScreen/homeScreen.jsx";
 import RepositoryPage from "../component/repositories/mainPageOfRepositories.jsx";
-import { BrowserRouter } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 
 export function App() {
     return (
         <>
-        
-            <RepositoryPage/>
+            <Routes>
+                <Route path="/" element={<HomeScreen/>}/>
+               <Route path="/repository" element= { <RepositoryPage/>}/> 
+               <Route path="/repository/:username" element= { <RepositoryPage/>}/> 
+
+            </Routes>
+            
 
         </>
         
