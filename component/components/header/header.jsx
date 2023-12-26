@@ -2,10 +2,10 @@ import { useState } from "react"
 
 
 
-export default function Header(props) {
+export default function Header1(props) {
 
 
-    const [params , setParams] = useState("")
+    
     return(
         <>
         

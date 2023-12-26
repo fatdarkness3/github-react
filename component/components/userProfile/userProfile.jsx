@@ -1,31 +1,59 @@
+import { useEffect , useState } from "react"
+
+import { getAnswerFromApiUserProfile } from "../../getAnswerFromApiUserProfile/getAnswerFromApiUserProfile"
 
 
 export default function UserProfile(props) {
+    
+
+    
+       
+    
+    let params = props.params
+
+
+    useEffect(() => {
+        getAnswerFromApiUserProfile (setRec , params )  
+    } , [])
+
+    let obj = {
+        image: rec.avatar_url , 
+        name: rec.name ,
+        login: rec.login ,
+        bio: rec.bio , 
+        followers_url: rec.followers_url , 
+        followers: rec.followers , 
+        following_url: rec.following_url , 
+        following: rec.following , 
+        blog : rec.blog , 
+
+    }
+
    return(
    <>
     
     <div className="p1">
                             <div className="userImage">
-                                <img src={props.profile.image}/>
+                                <img src={obj.image}/>
                             </div>
                             <div className="userName">
-                                <p>{props.profile.name}</p>
+                                <p>{obj.name}</p>
                             </div>
                             <div className="login">
-                                <h5>{props.profile.login}</h5>
+                                <h5>{obj.login}</h5>
                             </div>
                             <div className="button-follow">
                                 <button type="button" class="btn btn-secondary btn-sm">follow</button>
                             </div>
                             <div className="bio">
-                                <h6>{props.profile.bio}</h6>
+                                <h6>{obj.bio}</h6>
                             </div>
                             <div className="followers"> 
                                    
-                                        <a className="a" href={props.profile.followers_url}>
+                                        <a className="a" href={obj.followers_url}>
                                              
                                                 <i style={{ fontSize: "13px",}} class="fa fa-users"></i>
-                                                <span>{props.profile.followers}</span>
+                                                <span>{obj.followers}</span>
                                                 <p>followers</p>
                                             
                                             
@@ -33,9 +61,9 @@ export default function UserProfile(props) {
                                     
                                     <span>.</span>
                                     
-                                        <a className="a" href={props.profile.following_url}>
+                                        <a className="a" href={obj.following_url}>
                                             
-                                                <span>{props.profile.following}</span>
+                                                <span>{obj.following}</span>
                                                 <p>following</p>
                                             
                                         </a>
@@ -46,7 +74,7 @@ export default function UserProfile(props) {
                                <>
                                
                                <i className="fa fa-chain"></i>
-                               <a href={props.profile.blog}>{props.profile.blog}</a>
+                               <a href={obj.blog}>{obj.blog}</a>
                                 
                                
                                </>}

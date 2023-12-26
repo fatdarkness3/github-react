@@ -1,25 +1,24 @@
 
 import { useEffect, useState } from "react";
-import "../../styles/style.css";
-import { api } from "../../api/userInfo";
-import { repositories } from "../../api/RepositoresApi";
+import "../../../styles/style.css";
+
+import { repositories } from "../../../api/RepositoresApi";
 import RenderRepose from "./renderRepositories/renderrepose";
-import Header from "./header/header";
-import UserProfile from "./userProfile/userProfile";
+import Header1 from "../../components/header/header";
+import UserProfile from "../../components/userProfile/userProfile"
 import SearchBtn from "./searchBtn/searchBtn";
 import { MoonLoader } from "react-spinners";
-import propsForUserProfile from "./userProfile/propsForUserProfile/propsForUserProfile";
 import { useParams } from "react-router-dom";
-
+import { getAnswerFromApiUserProfile } from "../../getAnswerFromApiUserProfile/getAnswerFromApiUserProfile";
 
 export default function RepositoryPage() {
     
-    const [rec , setRec] = useState({})
+    
     const [repose , setRepose] = useState([])
     const [searchValue , setSearchValue ] = useState("")
     const [firstLoading , setFirstLoading] = useState(false)
     const [error , setError] = useState(false)
-
+    
     
 
      let params = useParams()
@@ -38,20 +37,27 @@ export default function RepositoryPage() {
         
 
         setFirstLoading(true)
-        api(a).then((e) => {
-            setRec(e)
-        })
-        .catch(() =>{
+            try {
+                getAnswerFromApiUserProfile()
+            }
+            
+        catch{
             setError(true)
-        })
+        }
 
         setError(false)
+
+
+
+
+
+
 
         repositories(a).then((e) => {
             setRepose(e)
             })
             .finally(() => {
-                {setFirstLoading(false)}
+                setFirstLoading(false)
             })
             
             
@@ -65,7 +71,7 @@ export default function RepositoryPage() {
             return(
                 <>
                     
-                    <Header params = {a} numberOfRepositories = {repose.length}/>
+                    <Header1 params = {a} numberOfRepositories = {repose.length}/>
                     <div className="main">
                         <div className="wrapper">
                             <div className="flexing">
@@ -75,7 +81,8 @@ export default function RepositoryPage() {
 
                             {error ? <h1 color="#fff">error</h1>  : 
                             
-                            <UserProfile profile = {propsForUserProfile(rec)} />}
+                            <UserProfile />}
+                            
 
                                 
                                 <div className="p2">
