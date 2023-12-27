@@ -1,5 +1,7 @@
+import { Link, useParams } from "react-router-dom";
 import { useState } from "react"
-
+// let par = useParams()
+// let b = par.username
 
 
 export default function Header1(props) {
@@ -99,16 +101,21 @@ export default function Header1(props) {
                                             
                                         </li>
                                         <li>
+                                        <Link to ={`/${props.params}/repository`}>
                                             <button className="focus">
                                             <div className="give-position">
                                                     <i class="fa fa-save"></i>
-                                                    <h6>Repositories</h6>
+                                                    
+                                                        <h6>Repositories</h6>
+                                                    
+                                                    
                                                     <div className="first">
                                                         <div className="absolute">{props.numberOfRepositories}</div>
                                                     </div>
                                                 </div>
                                                 <div className="backgroundBlack"></div>
                                             </button>
+                                            </Link>
                                             
                                                 
                                                 

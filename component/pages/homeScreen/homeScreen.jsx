@@ -11,8 +11,15 @@ export default function HomeScreen() {
 return(
     <>
 
-        <Header1/>
-        <UserProfile params = {getUserFromParams}/>
+        <Header1 params = {getUserFromParams}/>
+                    <div className="main">
+                        <div className="wrapper">
+                            <div className="flexing">
+                                <UserProfile params = {getUserFromParams}/>
+                            </div>
+                        </div>
+                    </div>
+        
     
     </>
 )

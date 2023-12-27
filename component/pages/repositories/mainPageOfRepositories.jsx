@@ -79,9 +79,7 @@ export default function RepositoryPage() {
         
                                 
 
-                            {error ? <h1 color="#fff">error</h1>  : 
-                            
-                            <UserProfile />}
+                            {error ? <h1 color="#fff">error</h1>  : <UserProfile />}
                             
 
                                 
