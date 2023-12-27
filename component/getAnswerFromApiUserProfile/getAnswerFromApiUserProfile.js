@@ -5,9 +5,9 @@ export function  getAnswerFromApiUserProfile(setRec , param ) {
     
    
         
-            api(param).then((e) => {
-                setRec(e)
-            })
+            // api(param).then((e) => {
+            //     setRec(e)
+            // })
             
         
     

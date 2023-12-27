@@ -91,6 +91,7 @@ export default function Header1(props) {
                     <div className="part2">
                                     <ul>
                                         <li>
+                                            <Link to={`/${props.params}`}>
                                             <button className="focus">
                                                 <div className="give-position">
                                                     <i class="fa fa-book"></i>
@@ -98,6 +99,8 @@ export default function Header1(props) {
                                                 </div>
                                                 <div className="backgroundBlack"></div>
                                             </button>
+                                            </Link>
+                                            
                                             
                                         </li>
                                         <li>
@@ -108,10 +111,8 @@ export default function Header1(props) {
                                                     
                                                         <h6>Repositories</h6>
                                                     
+                                                        {!props.numberOfRepositories ? <div className="none"><div className="absolute">{props.numberOfRepositories}</div></div>: <div className="first"><div className="absolute">{props.numberOfRepositories}</div></div>}
                                                     
-                                                    <div className="first">
-                                                        <div className="absolute">{props.numberOfRepositories}</div>
-                                                    </div>
                                                 </div>
                                                 <div className="backgroundBlack"></div>
                                             </button>
@@ -137,6 +138,7 @@ export default function Header1(props) {
                                                     <i class="fa fa-dropbox"></i>
                                                     <h6>package</h6>
                                                 </div>
+
                                                 <div className="backgroundBlack"></div>
                                             </button>
                                             

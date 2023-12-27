@@ -10,6 +10,7 @@ import SearchBtn from "./searchBtn/searchBtn";
 import { MoonLoader } from "react-spinners";
 import { useParams } from "react-router-dom";
 import { getAnswerFromApiUserProfile } from "../../getAnswerFromApiUserProfile/getAnswerFromApiUserProfile";
+import { insideRepositories } from "../../../api/insideRepositoriesApi";
 
 export default function RepositoryPage() {
     
@@ -18,11 +19,11 @@ export default function RepositoryPage() {
     const [searchValue , setSearchValue ] = useState("")
     const [firstLoading , setFirstLoading] = useState(false)
     const [error , setError] = useState(false)
-    
+    const [test , setTest] = useState("")
     
 
      let params = useParams()
-     let a = params.username
+     let getUserFromParams = params.username
      
     
 
@@ -34,6 +35,7 @@ export default function RepositoryPage() {
 
     useEffect(() => {
 
+        
         
 
         setFirstLoading(true)
@@ -53,7 +55,7 @@ export default function RepositoryPage() {
 
 
 
-        repositories(a).then((e) => {
+        repositories(getUserFromParams).then((e) => {
             setRepose(e)
             })
             .finally(() => {
@@ -71,7 +73,7 @@ export default function RepositoryPage() {
             return(
                 <>
                     
-                    <Header1 params = {a} numberOfRepositories = {repose.length}/>
+                    <Header1 params = {getUserFromParams} numberOfRepositories = {repose.length}/>
                     <div className="main">
                         <div className="wrapper">
                             <div className="flexing">
@@ -79,7 +81,7 @@ export default function RepositoryPage() {
         
                                 
 
-                            {error ? <h1 color="#fff">error</h1>  : <UserProfile />}
+                            {error ? <h1 color="#fff">error</h1>  : <UserProfile params = {getUserFromParams} />}
                             
 
                                 
@@ -90,11 +92,12 @@ export default function RepositoryPage() {
                                             if(e.name.includes(searchValue ) || searchValue  == e.name ) {
                                                 let result1 = new Date(e.updated_at).toLocaleDateString('en-GB');
                                             
-                                                return <RenderRepose id = {id}   pushed_at = {result1} language = {e.language} type={e.private} name={e.name}/>
+                                                return <RenderRepose params = {getUserFromParams} id = {id}   pushed_at = {result1} language = {e.language} type={e.private} name={e.name}/>
                                             }else if (searchValue == "" || !searchValue) {
                                                 let result1 = new Date(e.updated_at).toLocaleDateString('en-GB');
-                                            
-                                                return <RenderRepose id = {id}   pushed_at = {result1} language = {e.language} type={e.private} name={e.name}/>
+                                                
+                                                return <RenderRepose params = {getUserFromParams} id = {id}   pushed_at = {result1} language = {e.language} type={e.private} name={e.name}/>
+                                                
                                             }
                                             
                                             

@@ -1,6 +1,6 @@
 
 import { Octokit } from "octokit";
-import { token } from "../api/userInfo";
+import { token } from "./userInfo";
 async function repositories(username) {
 
     const octokit = new Octokit({

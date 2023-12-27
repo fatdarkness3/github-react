@@ -9,7 +9,9 @@ ul , li {
     margin: 0 auto;
     max-width: 1200px;
 }
-
+.none {
+    display: none;
+}
 body {
     background-color: #0d1117;
 }

@@ -1,14 +1,20 @@
+import { Link } from "react-router-dom"
+
 export default function RenderRepose(props) {
+    
     return(
         <>
     <div key = {props.id} className="father">
             <div className="space">
+                <Link to={`/${props.params}/${props.name}`}>
                 <div className="part1-1">
                     <a href="#" >
                         {props.name}
+                        
                     </a>
                     <p>{props.type==false ? "public": "privet"}</p>
                 </div>
+                </Link>
                 <div className="part2-2">
                     <button type="button" class="btn btn1  btn-secondary btn-sm">
                         <div className="p-p1">

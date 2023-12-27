@@ -1,33 +1,36 @@
 import { useContext, useEffect , useState } from "react"
-import { Context1 } from "../../context/context"
-import { getAnswerFromApiUserProfile } from "../../getAnswerFromApiUserProfile/getAnswerFromApiUserProfile"
-
+// import { Context1 } from "../../context/context"
+// import { getAnswerFromApiUserProfile } from "../../getAnswerFromApiUserProfile/getAnswerFromApiUserProfile"
+import { api } from "../../../api/userInfo"
 
 export default function UserProfile(props) {
     
-    let cont = useContext(Context1)
-    let a = cont.setSet1
-    let b = cont.rec1
+    // let cont = useContext(Context1)
+    // let a = cont.setSet1
+    // let b = cont.rec1
     
-       
+    let [rec , setSet] = useState("")
     
     let params = props.params
 
 
     useEffect(() => {
-        getAnswerFromApiUserProfile (a , params )  
+        // getAnswerFromApiUserProfile (a , params )  
+        api(params).then((e) => {
+            setSet(e)
+        })
     } , [])
 
     let obj = {
-        image: b.avatar_url , 
-        name: b.name ,
-        login: b.login ,
-        bio: b.bio , 
-        followers_url: b.followers_url , 
-        followers: b.followers , 
-        following_url: b.following_url , 
-        following: b.following , 
-        blog : b.blog , 
+        image: rec.avatar_url , 
+        name: rec.name ,
+        login:rec .login ,
+        bio:rec .bio , 
+        followers_url: rec.followers_url , 
+        followers: rec.followers , 
+        following_url: rec.following_url , 
+        following: rec.following , 
+        blog : rec.blog , 
 
     }
 
