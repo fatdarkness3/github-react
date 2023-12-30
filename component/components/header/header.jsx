@@ -21,7 +21,7 @@ export default function Header1(props) {
                                         <i class="bi bi-list"></i>
                                         </button>
                                         <i class="bi bi-github"></i>
-                                        <h4>arsam</h4>
+                                        <h4>{props.params}</h4>
                                     </div>
                         </div>
                         

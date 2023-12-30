@@ -3,7 +3,7 @@ import Header1 from "../../components/header/header"
 import UserProfile from "../../components/userProfile/userProfile";
 
 
-export default function HomeScreen() {
+export default function Profile() {
 
     const param = useParams()
     let getUserFromParams = param.username

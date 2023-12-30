@@ -16,7 +16,6 @@ async function pushFilesJs(username , nameOfRepository , default_branch) {
       'X-GitHub-Api-Version': '2022-11-28'
     }
   })
-  console.log(ret)
       return ret.data;
 }
 export {pushFilesJs};

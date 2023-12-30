@@ -1,6 +1,7 @@
-import HomeScreen from "../component/pages/homeScreen/homeScreen.jsx";
+import Profile from "../component/pages/ProfilePage/ProfilePage.jsx";
 import RepositoryPage from "../component/pages/repositories/mainPageOfRepositories.jsx";
 import { Routes, Route } from "react-router-dom";
+import HomePage from "../component/pages/homePage/homePage.jsx";
 // import { Context1 } from "../component/context/context.js";
 // import { useState } from "react";
 import React from 'react';
@@ -19,8 +20,8 @@ export function App() {
         //     setSet1: setSet
         // }}>
             <Routes>
-                
-                <Route path="/:username" element={ <HomeScreen/>}/>
+                <Route path="/" element={ <HomePage/>}/>
+                <Route path="/:username" element={ <Profile/>}/>
                 
                 {/* <Route path="" element={ <HomeScreen/>}/> */}
 
