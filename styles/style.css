@@ -22,6 +22,10 @@ h1 , h2 , h3 , h4 , h5 , h6 {
 i {
     color: #848d97;
 }
+.wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+}
 header {
     padding: 0 20px;
     margin:0px 10px 10px 10px;
@@ -135,6 +139,9 @@ i.bi-github {
     margin: 0;
     display: flex;
     align-items: center;
+}
+.part2 .notCenter {
+    align-items: baseline;
 }
 /* .part2 ul li {
     
@@ -430,9 +437,106 @@ i.bi-github {
     left: 50%;
     transform: translate(-50% , -50%);
 }
-.center input {
-    
+.wrapper .showWhoIsLogin {
+    border-bottom: 1px solid #30363d ;
 }
+.wrapper .showWhoIsLogin .p1 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 20px;
+}
+.wrapper .showWhoIsLogin .p1 img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @media only screen and (max-width: 1230px) {
     .main {
         padding: 0 60px;

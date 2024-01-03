@@ -7,6 +7,7 @@ import HomePage from "../component/pages/homePage/homePage.jsx";
 import React from 'react';
 
 import InsideRepositories from "../component/pages/repositories/renderRepositories/insideRepositories/insideRepositories.jsx";
+import Followers from "../component/pages/followers/followers.jsx";
 
 
 export function App() {
@@ -28,7 +29,7 @@ export function App() {
                <Route path="/:username/repository" element= { <RepositoryPage/>}/> 
                {/* <Route path="/:username/repository" element= { <RepositoryPage/>}/>  */}
                <Route path ="/:username/:nameOfRepository" element = {<InsideRepositories/>}/>
-               
+               <Route path="/:username/tab=followers" element={<Followers/>}/>
 
             </Routes>
             

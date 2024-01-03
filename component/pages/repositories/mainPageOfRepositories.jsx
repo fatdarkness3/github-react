@@ -22,9 +22,9 @@ export default function RepositoryPage() {
     const [test , setTest] = useState("")
     
 
-     let params = useParams()
-     let getUserFromParams = params.username
-     
+    let params = useParams()
+   
+    let getUserFromParams = params.username
     
 
 

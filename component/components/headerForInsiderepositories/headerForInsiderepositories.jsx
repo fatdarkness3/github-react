@@ -4,12 +4,12 @@ import { useState } from "react"
 // let b = par.username
 
 
-export default function Header1(props) {
+export default function HeaderForInsiderepositories (props) {
 
 const [set , setSet] = useState("")
 
  
-    let params = useParams()
+    
     
     
    
@@ -27,7 +27,7 @@ const [set , setSet] = useState("")
                                         <i class="bi bi-list"></i>
                                         </button>
                                         <i class="bi bi-github"></i>
-                                        <h4>{props.params}</h4>
+                                        <h4>{props.params} / {props.nameOfRepository}</h4>
                                     </div>
                         </div>
                         
@@ -100,13 +100,13 @@ const [set , setSet] = useState("")
 
 
                     <div className="part2">
-                                    <ul>
+                                    <ul className="notCenter">
                                         <li>
                                             <Link to={`/${props.params}`}>
                                             <button className="focus">
                                                 <div className="give-position">
-                                                    <i class="fa fa-book"></i>
-                                                    <h6>Overview</h6>
+                                                    <i class="fa fa-code"></i>
+                                                    <h6>Code</h6>
                                                 </div>
                                                 <div className="backgroundBlack"></div>
                                             </button>
@@ -118,9 +118,9 @@ const [set , setSet] = useState("")
                                         <Link to ={`/${props.params}/repository`}>
                                             <button className="focus">
                                             <div className="give-position">
-                                                    <i class="fa fa-save"></i>
+                                                    <i class="fa fa-savefa fa-circle-thin"></i>
                                                     
-                                                        <h6>Repositories</h6>
+                                                        <h6>Issuese</h6>
                                                     
                                                         {!props.numberOfRepositories ? <div className="none"><div className="absolute">{props.numberOfRepositories}</div></div>: <div className="first"><div className="absolute">{props.numberOfRepositories}</div></div>}
                                                     
@@ -135,8 +135,8 @@ const [set , setSet] = useState("")
                                         <li>
                                             <button className="focus">
                                             <div className="give-position">
-                                                    <i class="fa fa-columns"></i>
-                                                    <h6>Project</h6>
+                                                    <i class="fa fa-stumbleupon"></i>
+                                                    <h6>Pull requests</h6>
                                                 </div>
                                                 <div className="backgroundBlack"></div>
                                             </button>
@@ -146,8 +146,8 @@ const [set , setSet] = useState("")
                                         <li>
                                             <button className="focus">
                                                 <div className="give-position">
-                                                    <i class="fa fa-dropbox"></i>
-                                                    <h6>package</h6>
+                                                    <i class="fa fa-play-circle-o"></i>
+                                                    <h6>Actions</h6>
                                                 </div>
 
                                                 <div className="backgroundBlack"></div>
@@ -158,10 +158,10 @@ const [set , setSet] = useState("")
                                         <li>
                                             <button className="focus">
                                             <div className="give-position">
-                                                    <i class="fa fa-star-o"></i>
-                                                    <h6>Star</h6>
+                                                    <i class="fa fa-columns"></i>
+                                                    <h6>Project</h6>
                                                 </div>
-                                            <div className="backgroundBlack"></div>
+                                            
                                             </button>
                                                 
                                             

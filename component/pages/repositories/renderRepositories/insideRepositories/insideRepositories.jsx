@@ -2,7 +2,10 @@ import { useEffect, useState } from "react"
 import { insideRepositories } from "../../../../../api/insideRepositoriesApi"
 import { json, useParams } from "react-router-dom"
 import { pushFilesJs } from "../../../../../api/pushFiles"
-
+import InsideRepositoriesComponent from "../../../../components/insideRepositories/insideRepositoriesComponent"
+import HeaderForInsiderepositories from "../../../../components/headerForInsiderepositories/headerForInsideRepositories"
+import "../../../../../styles/style.css"
+import { api } from "../../../../../api/userInfo"
 export default function InsideRepositories() {
 
 // let obj = {
@@ -18,8 +21,10 @@ export default function InsideRepositories() {
     let nameOfRepository = param.nameOfRepository
     
     const [res , setRes] = useState({})
-    const [res2 , setRes2] = useState({})
+    const [res2 , setRes2] = useState([])
+    const [req , setReq] = useState({})
     let default_branch = res.default_branch
+
     useEffect(() => {
         insideRepositories(username , nameOfRepository).then((e) => {
             setRes(e)
@@ -28,17 +33,36 @@ export default function InsideRepositories() {
 
         pushFilesJs( username , nameOfRepository , default_branch ).then((e) => {
             setRes2(e.tree)
-
+            
             
         })
-        console.log(res2)
+        api(username).then((e) => {
+            console.log(e)
+            setReq(e)
+        })
     } , [])
     
     return (
         <>
-        
 
-           
+        <HeaderForInsiderepositories params={username} nameOfRepository={nameOfRepository}/>
+
+        <div className="wrapper">
+            <div className="showWhoIsLogin">
+                <div className="p1">
+                    <img src={req.avatar_url}/>
+                    <h6>{nameOfRepository}</h6>
+                </div>
+                <div className="p2"></div>
+            </div>
+        {res2.map((e) => {
+            console.log(e)
+          return(<InsideRepositoriesComponent path = {e.path}/>)  
+            
+        })}
+        </div>
+        
+          
         
         
         </>

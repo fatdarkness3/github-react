@@ -2,6 +2,9 @@ import { useContext, useEffect , useState } from "react"
 // import { Context1 } from "../../context/context"
 // import { getAnswerFromApiUserProfile } from "../../getAnswerFromApiUserProfile/getAnswerFromApiUserProfile"
 import { api } from "../../../api/userInfo"
+import Link from "antd/es/typography/Link"
+
+
 
 export default function UserProfile(props) {
     
@@ -10,17 +13,9 @@ export default function UserProfile(props) {
     // let b = cont.rec1
     
     let [rec , setSet] = useState("")
-    
+    let [test , setTest] = useState([])
     let params = props.params
-
-
-    useEffect(() => {
-        // getAnswerFromApiUserProfile (a , params )  
-        api(params).then((e) => {
-            setSet(e)
-        })
-    } , [])
-
+    
     let obj = {
         image: rec.avatar_url , 
         name: rec.name ,
@@ -34,6 +29,23 @@ export default function UserProfile(props) {
 
     }
 
+    let followers = obj.followers_url
+
+    useEffect(() => {
+        // getAnswerFromApiUserProfile (a , params )  
+        api(params).then((e) => {
+            setSet(e)
+        })
+        // followersApi(params).then((e) => {
+        //     setTest(e)
+        // })
+        // console.log(test)
+    } , [])
+ 
+    
+    
+    
+    
    return(
    <>
     
@@ -54,16 +66,17 @@ export default function UserProfile(props) {
                                 <h6>{obj.bio}</h6>
                             </div>
                             <div className="followers"> 
-                                   
-                                        <a className="a" href={obj.followers_url}>
+                                    
+                                        <Link className="a" href={followers}>
                                              
                                                 <i style={{ fontSize: "13px",}} class="fa fa-users"></i>
                                                 <span>{obj.followers}</span>
                                                 <p>followers</p>
                                             
-                                            
-                                        </a> 
-                                    
+                                        </Link> 
+                                       {/* /-----------------------------------------------------------------------------------------------------------------------/ */}
+                                        
+                                        
                                     <span>.</span>
                                     
                                         <a className="a" href={obj.following_url}>
