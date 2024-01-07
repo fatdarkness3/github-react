@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useState } from "react"
 // let par = useParams()
 // let b = par.username
@@ -10,8 +10,12 @@ const [set , setSet] = useState("")
 
  
     let params = useParams()
-    
-    
+    console.log(params)
+    let pathanem = ( window.location.pathname);
+  let replace =   pathanem.replace("/" , "")
+  console.log(replace)
+  
+    const navigate = useNavigate()
    
     
     
@@ -36,7 +40,19 @@ const [set , setSet] = useState("")
                         <div className="f">
                         
                         <div className="right">
-                            <div className="f"  >
+                            <form className="f" onSubmit={(e) => {
+                                e.preventDefault()
+                                if(replace == params.username) {
+
+                                    navigate(`/${set}`)
+                                    location.reload();
+
+                                }else if(replace == `${params.username}/repository`){
+                                    navigate(`/${set}/repository`)
+                                    location.reload();
+                                }
+                                
+                            }} >
                                 
                                     <button type="button" class="btn btn-outline-secondary bbb" >
                                         <i class="fa fa-search"></i>
@@ -48,16 +64,11 @@ const [set , setSet] = useState("")
                                             
 
                                         }} className="input" type="search" placeholder="Type / to search "/>
-                                        
                                     </button>
                                     
-                                    <button onClick={() => {
-                                        params.username = set
-                                        
-                                    }}>click</button>
                                     
                                     
-                                </div>
+                                </form>
                                 
                                     
                                 <button type="button" class="btn btn-outline-secondary">

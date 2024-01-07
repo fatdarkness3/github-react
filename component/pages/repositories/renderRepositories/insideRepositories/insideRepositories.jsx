@@ -6,6 +6,8 @@ import InsideRepositoriesComponent from "../../../../components/insideRepositori
 import HeaderForInsiderepositories from "../../../../components/headerForInsiderepositories/headerForInsideRepositories"
 import "../../../../../styles/style.css"
 import { api } from "../../../../../api/userInfo"
+
+
 export default function InsideRepositories() {
 
 // let obj = {
@@ -16,31 +18,42 @@ export default function InsideRepositories() {
 //     name5: "pedaret5" , 
 // }
 
-    let param = useParams()
-    let username  = param.username
-    let nameOfRepository = param.nameOfRepository
+
+const [res , setRes] = useState({})
+const [res2 , setRes2] = useState([])
+const [req , setReq] = useState({})
+const [click , setClick] = useState("")
+let param = useParams()
+let username  = param.username
+let nameOfRepository = param.nameOfRepository
     
-    const [res , setRes] = useState({})
-    const [res2 , setRes2] = useState([])
-    const [req , setReq] = useState({})
     let default_branch = res.default_branch
 
     useEffect(() => {
+
         insideRepositories(username , nameOfRepository).then((e) => {
+            
             setRes(e)
         })
 
 
+        
+
         pushFilesJs( username , nameOfRepository , default_branch ).then((e) => {
+
+            
             setRes2(e.tree)
             
             
         })
+
         api(username).then((e) => {
-            console.log(e)
+            
             setReq(e)
+
         })
-    } , [])
+
+    } , [click])
     
     return (
         <>
@@ -52,12 +65,16 @@ export default function InsideRepositories() {
                 <div className="p1">
                     <img src={req.avatar_url}/>
                     <h6>{nameOfRepository}</h6>
+                    <button onClick={() => {
+                        setClick()
+                    }}>alo</button>
                 </div>
                 <div className="p2"></div>
             </div>
         {res2.map((e) => {
-            console.log(e)
-          return(<InsideRepositoriesComponent path = {e.path}/>)  
+            
+            
+          return <InsideRepositoriesComponent path = {e.path}/>  
             
         })}
         </div>
