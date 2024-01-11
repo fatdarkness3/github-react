@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import Header1 from "../../components/header/header"
 import UserProfile from "../../components/userProfile/userProfile";
+import PinAndEse from "../../components/pinsAndEse/pinsAndEse";
 
 
 export default function Profile() {
@@ -16,6 +17,7 @@ return(
                         <div className="wrapper">
                             <div className="flexing">
                                 <UserProfile params = {getUserFromParams}/>
+                                <PinAndEse params = {getUserFromParams}/>
                             </div>
                         </div>
                     </div>

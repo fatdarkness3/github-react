@@ -66,6 +66,7 @@ export default function RepositoryPage() {
 
         } , [])
         
+        
         if(firstLoading == true) {
             return <div className="loading"><MoonLoader color="#36d7b7" /></div> 
         } else {

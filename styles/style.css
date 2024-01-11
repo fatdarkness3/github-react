@@ -1,6 +1,9 @@
 * {
     box-sizing: border-box;
 }
+*::after , *::before {
+    box-sizing: border-box;
+}
 ul , li {
     list-style: none;
     padding: 0;
@@ -448,8 +451,50 @@ i.bi-github {
     height: 30px;
     border-radius: 50%;
 }
-
-
+.p {
+    width: 100%;
+}
+.p .part1 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 25px;
+    margin-top: 10px;
+    height: 210px;
+    overflow: hidden;
+}
+.headerForBorder {
+    width: 48%;
+    padding: 15px;
+    border: 1px solid #30363d;
+    border-radius: 7px;
+}
+.headerForBorder .part1-1 {
+    display: flex;
+    justify-content: space-between;
+}
+.part1-11 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    
+}
+.part1-11 div {
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background-color: #f1e05a;
+}
+.part1-11 p {
+    color: #848d97;
+    font-size: 13px;
+    margin: 0;
+}
+.p .part2 .calendar {
+    
+    
+    margin: 0 auto;
+}
 
 
 

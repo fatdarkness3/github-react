@@ -2,11 +2,13 @@ import { Link } from "react-router-dom"
 
 export default function RenderRepose(props) {
     
+   
     return(
         <>
     <div key = {props.id} className="father">
             <div className="space">
                 <Link to={`/${props.params}/${props.name}`}>
+
                 <div className="part1-1">
                     <a href="#" >
                         {props.name}
@@ -14,6 +16,7 @@ export default function RenderRepose(props) {
                     </a>
                     <p>{props.type==false ? "public": "privet"}</p>
                 </div>
+                
                 </Link>
                 <div className="part2-2">
                     <button type="button" class="btn btn1  btn-secondary btn-sm">
@@ -40,9 +43,7 @@ export default function RenderRepose(props) {
 
                     <p>{props.pushed_at}</p>
                 </div>
-                <div className="part2-2">
-                    
-                </div>
+                
             </div>
         </div>
         </>

@@ -10,10 +10,10 @@ const [set , setSet] = useState("")
 
  
     let params = useParams()
-    console.log(params)
+    
     let pathanem = ( window.location.pathname);
   let replace =   pathanem.replace("/" , "")
-  console.log(replace)
+  
   
     const navigate = useNavigate()
    

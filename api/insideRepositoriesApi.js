@@ -13,6 +13,9 @@ async function insideRepositories(username , nameOfRepository ) {
           'X-GitHub-Api-Version': '2022-11-28'
         }
       })
-      return importApi.data;
+      let a= importApi.data
+      
+      return a;
 }
+
 export {insideRepositories}

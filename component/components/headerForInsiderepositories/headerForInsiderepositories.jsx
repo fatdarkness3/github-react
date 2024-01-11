@@ -6,7 +6,8 @@ import { useState } from "react"
 
 export default function HeaderForInsiderepositories (props) {
 
-const [set , setSet] = useState("")
+let paramsUsername = props.params
+let nameOfRepository = props.nameOfRepository
 
  
     
@@ -27,7 +28,7 @@ const [set , setSet] = useState("")
                                         <i class="bi bi-list"></i>
                                         </button>
                                         <i class="bi bi-github"></i>
-                                        <h4>{props.params} / {props.nameOfRepository}</h4>
+                                        <h4>{paramsUsername} / {nameOfRepository}</h4>
                                     </div>
                         </div>
                         
@@ -40,21 +41,11 @@ const [set , setSet] = useState("")
                                 
                                     <button type="button" class="btn btn-outline-secondary bbb" >
                                         <i class="fa fa-search"></i>
-                                        <input onChange={(e) => {
-                                            
-
-                                            let val = e.target.value
-                                            setSet(val)
-                                            
-
-                                        }} className="input" type="search" placeholder="Type / to search "/>
+                                        <input  className="input" type="search" placeholder="Type / to search "/>
                                         
                                     </button>
                                     
-                                    <button onClick={() => {
-                                        params.username = set
-                                        
-                                    }}>click</button>
+                                    
                                     
                                     
                                 </div>
@@ -102,7 +93,7 @@ const [set , setSet] = useState("")
                     <div className="part2">
                                     <ul className="notCenter">
                                         <li>
-                                            <Link to={`/${props.params}`}>
+                                            <Link to={`/${paramsUsername}/${nameOfRepository}`}>
                                             <button className="focus">
                                                 <div className="give-position">
                                                     <i class="fa fa-code"></i>
@@ -115,7 +106,7 @@ const [set , setSet] = useState("")
                                             
                                         </li>
                                         <li>
-                                        <Link to ={`/${props.params}/repository`}>
+                                        
                                             <button className="focus">
                                             <div className="give-position">
                                                     <i class="fa fa-savefa fa-circle-thin"></i>
@@ -127,7 +118,7 @@ const [set , setSet] = useState("")
                                                 </div>
                                                 <div className="backgroundBlack"></div>
                                             </button>
-                                            </Link>
+                                            
                                             
                                                 
                                                 

@@ -7,7 +7,6 @@ import HeaderForInsiderepositories from "../../../../components/headerForInsider
 import "../../../../../styles/style.css"
 import { api } from "../../../../../api/userInfo"
 
-
 export default function InsideRepositories() {
 
 // let obj = {
@@ -22,7 +21,8 @@ export default function InsideRepositories() {
 const [res , setRes] = useState({})
 const [res2 , setRes2] = useState([])
 const [req , setReq] = useState({})
-const [click , setClick] = useState("")
+const [isRepositoryLoaded , setIsRepositoryLoaded]= useState(false)
+
 let param = useParams()
 let username  = param.username
 let nameOfRepository = param.nameOfRepository
@@ -34,27 +34,36 @@ let nameOfRepository = param.nameOfRepository
         insideRepositories(username , nameOfRepository).then((e) => {
             
             setRes(e)
+            setIsRepositoryLoaded(true)
         })
 
 
         
 
-        pushFilesJs( username , nameOfRepository , default_branch ).then((e) => {
-
-            
-            setRes2(e.tree)
-            
-            
-        })
-
+        
+        
         api(username).then((e) => {
-            
             setReq(e)
-
+            
+            
         })
 
-    } , [click])
+    } , [])
     
+    useEffect(() => {
+        if(isRepositoryLoaded) {
+            pushFilesJs( username , nameOfRepository , default_branch ).then((e) => {
+            
+            
+                
+                let tree = e.tree
+                setRes2(tree)
+            })
+        }
+        
+
+    } , [isRepositoryLoaded])
+
     return (
         <>
 
@@ -65,9 +74,7 @@ let nameOfRepository = param.nameOfRepository
                 <div className="p1">
                     <img src={req.avatar_url}/>
                     <h6>{nameOfRepository}</h6>
-                    <button onClick={() => {
-                        setClick()
-                    }}>alo</button>
+                    
                 </div>
                 <div className="p2"></div>
             </div>
